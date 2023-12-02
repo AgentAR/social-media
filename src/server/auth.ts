@@ -1,5 +1,5 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { sqliteTable } from "drizzle-orm/sqlite-core";
+// import { sqliteTable } from "drizzle-orm/sqlite-core";
 // import { type SqlliteTableFn } from "drizzle-orm/mysql-core";
 import {
   getServerSession,
@@ -47,7 +47,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
-  adapter: DrizzleAdapter(db,sqliteTable),
+  adapter: DrizzleAdapter(db),
   providers: [
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
