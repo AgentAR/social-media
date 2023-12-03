@@ -1,12 +1,11 @@
-import { createClient } from "@libsql/client";
-import { drizzle } from "drizzle-orm/libsql";
+import { neon, neonConfig } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
+ 
 
 import { env } from "~/env";
 import * as schema from "./schema";
+neonConfig.fetchConnectionCache = true;
 
-const client = createClient({
-  url: env.DATABASE_URL,
-  authToken: env.DATABASE_AUTH
-});
+const client = neon(env.DATABASE_URL);
 
 export const db = drizzle(client, { schema });
