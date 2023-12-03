@@ -10,5 +10,11 @@ export function RecentTweets() {
         getNextPageParam: (lastpage) => lastpage.nextCursor,
       },
     );
-    return <InfiniteTweetList tweets={tweets.data?.pages.flatMap((page)=> page.tweets)} isError={tweets.isError} isLoading={tweets.isLoading} hasMore={tweets.hasNextPage} fetchNewTweets={tweets.fetchNextPage} />;
+    let t;
+    if(tweets.hasNextPage !=undefined){
+      t=tweets.hasNextPage
+    }else{
+      t=false
+    }
+    return <InfiniteTweetList tweets={tweets.data?.pages.flatMap((page)=> page.tweets)} isError={tweets.isError} isLoading={tweets.isLoading} hasMore={t} fetchNewTweets={tweets.fetchNextPage} />;
 }

@@ -16,7 +16,7 @@ type tweet = {
 type InfiniteTweetListProps = {
   isLoading: boolean;
   isError: boolean;
-  hasMore: boolean;
+  hasMore: boolean ;
   fetchNewTweets: () => Promise<unknown>;
   tweets?: tweet[];
 };
